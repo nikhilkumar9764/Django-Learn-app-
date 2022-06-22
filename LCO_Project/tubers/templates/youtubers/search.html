@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <main class="searchpage">
+    <div class="banner">
+      <img src="{% static './assets/images/bg-banner.png' %}" alt="" class="img-fluid w-100">
+      <h1 class="text-center">
+        Search Result
+      </h1>
+    </div>
+
+    <section class="searchbox container mt-5 p-3 bg-accent">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <select id="inputState" class="form-control">
+              <option selected disabled hidden>City</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <select id="inputState" class="form-control">
+              <option selected disabled hidden>Camera Type</option>
+              <option>Value 1</option>
+              <option>Value 2</option>
+              <option>Value 3</option>
+              <option>Value 4</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <select class="form-control">
+              <option selected disabled hidden>Category</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+
+      </form>
+      <div class="text-center">
+
+        <button class="btn btn-light">Search</button>
+      </div>
+    </section>
+
+
+
+    <section class="search-results container mt-3 grid">
+
+       {% for x in tubers %}
+            <div class="card border-0 text-center">
+              <div class="feature-text">
+                <img src="{{x.photo.url}}" class="card-img-top" alt="team-member">
+                <span class="text-left bg-accent font-weight-bold">
+                  Featured
+                </span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{x.name}}</h5>
+                <p class="card-text">{{x.category}}</p>
+                <div class="person-description mt-2">
+                  <button class="btn btn-accent"> {{x.age}} </button>
+                  <button class="btn btn-accent"> {{x.height}} </button>
+                  <button class="btn btn-accent"> {{x.city}} </button>
+                </div>
+                <div class="person-description mt-2">
+                  <button class="btn btn-accent"> {{x.crew}} </button>
+                  <button class="btn btn-accent"> {{x.camera_type}} </button>
+                  <button class="btn btn-accent"> {{x.subs_count}} </button>
+                </div>
+              </div>
+            </div>
+        {% endfor%}
+
+    </section>
+  </main>
+
+{% endblock %}
